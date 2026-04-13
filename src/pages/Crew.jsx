@@ -19,7 +19,10 @@ function Crew() {
     const [scenes, setScenes] = useState([]);
     useEffect(() => {
         if (!projectId) return;
-        authFetch(`http://localhost:5000/api/projects/${projectId}/scenes`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes`)
             .then(res => res.json())
             .then(data => setScenes(Array.isArray(data) ? data : []))
             .catch(console.error);
@@ -30,7 +33,10 @@ function Crew() {
     }, [projectId]);
 
     function loadCrew() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/crew`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/crew`)
             .then((res) => res.json())
             .then((data) => setCrew(Array.isArray(data) ? data : []))
             .catch(console.error);
@@ -52,7 +58,10 @@ function Crew() {
             scenes: assignedScenes,
         };
 
-        authFetch(`http://localhost:5000/api/projects/${projectId}/crew`, {
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/crew`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
@@ -70,7 +79,10 @@ function Crew() {
     }
 
     function deleteCrew(id) {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/crew/${id}`, {
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/crew/${id}`, {
             method: "DELETE",
         })
             .then(() => loadCrew())

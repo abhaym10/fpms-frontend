@@ -24,14 +24,20 @@ function Scenes() {
 
     useEffect(() => {
         if (!projectId) return;
-        authFetch(`http://localhost:5000/api/projects/${projectId}/crew`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/crew`)
             .then(res => res.json())
             .then(data => setCrew(Array.isArray(data) ? data : []))
             .catch(console.error);
     }, [projectId]);
 
     function loadCrew() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/crew`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/crew`)
             .then(res => res.json())
             .then(setCrew)
             .catch(console.error);
@@ -53,7 +59,10 @@ function Scenes() {
         };
 
         if (editingSceneId) {
-            authFetch(`http://localhost:5000/api/projects/${projectId}/scenes/${editingSceneId}`, {
+            authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes/${editingSceneId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -71,7 +80,10 @@ function Scenes() {
                 })
                 .catch(console.error);
         } else {
-            authFetch(`http://localhost:5000/api/projects/${projectId}/scenes`, {
+            authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -90,7 +102,10 @@ function Scenes() {
     }
 
     function deleteScene(sceneId) {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/scenes/${sceneId}`,
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes/${sceneId}`,
             { method: "DELETE" }
         ).then(() => {
             loadScenes();
@@ -99,7 +114,10 @@ function Scenes() {
 
     function updateScene(sceneId, updatedData) {
         authFetch(
-            `http://localhost:5000/api/projects/${projectId}/scenes/${sceneId}`,
+            `
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes/${sceneId}`,
             {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -136,7 +154,10 @@ function Scenes() {
     }
 
     function loadScenes() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/scenes`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes`)
             .then((res) => res.json())
             .then((data) => setScenes(data))
             .catch(console.error);

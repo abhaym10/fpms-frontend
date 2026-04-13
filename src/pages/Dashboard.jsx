@@ -25,14 +25,20 @@ function Dashboard() {
     useEffect(() => {
         if (!projectId) return;
 
-        authFetch(`http://localhost:5000/api/projects/${projectId}/scenes`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes`)
             .then((res) => res.json())
             .then((data) => {
                 setScenes(Array.isArray(data) ? data : []);
             })
             .catch(() => setScenes([]));
 
-        authFetch(`http://localhost:5000/api/projects/${projectId}/budget`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/budget`)
             .then(res => res.json())
             .then(data => setBudget(data))
             .catch(() => setBudget({

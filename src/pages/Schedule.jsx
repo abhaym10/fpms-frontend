@@ -23,7 +23,10 @@ function Schedule() {
     }, [projectId]);
 
     function loadSchedule() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/schedule`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/schedule`)
             .then((res) => res.json())
             .then((data) => {
                 const sorted = data.sort(
@@ -45,7 +48,10 @@ function Schedule() {
         const payload = { date, scene, location, status, notes };
 
         if (editingId) {
-            authFetch(`http://localhost:5000/api/projects/${projectId}/schedule/${editingId}`, {
+            authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/schedule/${editingId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -58,7 +64,10 @@ function Schedule() {
                 })
                 .catch(console.error);
         } else {
-            authFetch(`http://localhost:5000/api/projects/${projectId}/schedule`, {
+            authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/schedule`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -82,7 +91,10 @@ function Schedule() {
 
     function deleteItem(id) {
         authFetch(
-            `http://localhost:5000/api/projects/${projectId}/schedule/${id}`,
+            `
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/schedule/${id}`,
             { method: "DELETE" }
         ).then(loadSchedule);
     }

@@ -22,7 +22,10 @@ function Budget() {
     }, [projectId]);
 
     function loadBudget() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/budget`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/budget`)
             .then((res) => res.json())
             .then((data) => {
                 setBudget({
@@ -43,7 +46,10 @@ function Budget() {
 
         if (editingExpenseId !== null) {
             authFetch(
-                `http://localhost:5000/api/projects/${projectId}/budget/${editingExpenseId}`,
+                `
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/budget/${editingExpenseId}`,
                 {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -58,7 +64,10 @@ function Budget() {
                 .catch(console.error);
         } else {
             authFetch(
-                `http://localhost:5000/api/projects/${projectId}/budget`,
+                `
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/budget`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -76,7 +85,10 @@ function Budget() {
 
     function deleteExpense(expenseId) {
         authFetch(
-            `http://localhost:5000/api/projects/${projectId}/budget/${expenseId}`,
+            `
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/budget/${expenseId}`,
             { method: "DELETE" }
         )
             .then(() => loadBudget())
@@ -91,7 +103,10 @@ function Budget() {
     }
 
     function updatePlannedBudget() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/budget/planned`, {
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/budget/planned`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ planned: Number(plannedBudget) }),

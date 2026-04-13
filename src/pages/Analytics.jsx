@@ -30,14 +30,20 @@ function Analytics() {
     }, [projectId]);
 
     function loadScenes() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/scenes`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/scenes`)
             .then((res) => res.json())
             .then(data => setScenes(Array.isArray(data) ? data : []))
             .catch(console.error);
     }
 
     function loadBudget() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/budget`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/budget`)
             .then((res) => res.json())
             .then(data =>
                 setBudget({
@@ -51,7 +57,10 @@ function Analytics() {
     }
 
     function loadSchedule() {
-        authFetch(`http://localhost:5000/api/projects/${projectId}/schedule`)
+        authFetch(`
+https://fpms-backend-19w5.onrender.com
+
+/api/projects/${projectId}/schedule`)
             .then((res) => res.json())
             .then(data => setSchedule(Array.isArray(data) ? data : []))
             .catch(() => setSchedule([]));
